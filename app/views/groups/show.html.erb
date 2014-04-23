@@ -13,13 +13,8 @@
 
 
   <div class="group pull-right">
-    <% if current_user && @group.editable_by?(current_user) %>
-      <% if current_user.is_member_of?(@group) %>
-    <%= link_to("Edit", edit_group_path(@group), :class => "btn btn-mini") %>
-      <% end %>
-    <% end %>
-    <%= link_to("New Post", new_group_post_path(@group), :class => "btn btn-mini btn-primary") if current_user.is_member_of?(@group) %>
-        &nbsp;
+      <%= render_edit_post_button(@group) %>
+      <%= render_new_post_button(@group) %>
   </div>
 
 
@@ -35,7 +30,7 @@
         <span class="author">
           <strong> Author : <%= post.author.name %> </strong>
         </span>
-       <p> <%= post.content %> </p> 
+       <p> <%= render_post_content(post) %> </p> 
      </td>
     <% if current_user && post.editable_by?(current_user) %>
       <td>

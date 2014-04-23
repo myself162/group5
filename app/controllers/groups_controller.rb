@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :login_required, :only => [:new, :create, :edit, :update, :destroy]
-  before_action :member_required, :only => [:edit, :destroy]
+  before_action :login_required, :only => [:new, :create, :edit, :update, :destroy, :join]
   def index
     @groups = Group.all
   end
@@ -70,13 +69,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:title, :description)
   end
 
-  def member_required
-    if !current_user.is_member_of?(@group)
-      flash[:warning] = "You are not member of this group!"
-      redirect_to group_path(@group)
-    end
-    
-  end
+
 
 
 

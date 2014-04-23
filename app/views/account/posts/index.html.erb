@@ -12,9 +12,9 @@
       <tr>
         <td> <p> <%= post.content %> </p> </td>
         <td> <%= post.group.title %> </td>
-        <td> <%= post.updated_at %> </td>
-        <td> <%= link_to("Edit", edit_group_post_path(post.group, post), :class => "btn btn-mini") %> </td>
-        <td> <%= link_to("Delete", group_post_path(post.group, post), :class => "btn btn-mini btn-primary", :method => :delete, :confirm => "Are you sure>") %> </td>
+        <td> <%= post.updated_at.to_s(:long) %> </td>
+        <td> <%= link_to("Edit", edit_group_post_path(post.group, post), :class => "btn btn-mini") %> 
+             <%= link_to("Delete", group_post_path(post.group, post), :class => "btn btn-mini btn-primary", :method => :delete, :confirm => "Are you sure>") %> </td>
       </tr>
       <% end %>
     </tbody>
